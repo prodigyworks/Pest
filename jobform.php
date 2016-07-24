@@ -8,18 +8,18 @@
 		display: none;
 	}
 </style>
-<form class="contentform" method="post" enctype="multipart/form-data" action="jobformpost.php">
+<form class="contentform" id="reportform" method="post" enctype="multipart/form-data" action="jobformpost.php">
 	<table cellspacing=7>
 		<tr>
 			<td>Date</td>
 			<td>
-				<input type="date" id="jobdate" name="jobdate" required value="<?php echo date("Y-m-d"); ?>" />
+				<input type="date" id="jobdate" name="jobdate" required value="<?php echo date("Y-m-d"); ?>" required="true" />
 			</td>
 		</tr>
 		<tr>
 			<td>Time</td>
 			<td>
-				<input type="time" id="jobtime" name="jobtime" required value="<?php echo date("H:i"); ?>" />
+				<input type="time" id="jobtime" name="jobtime" required value="<?php echo date("H:i"); ?>" required="true" />
 			</td>
 		</tr>
 		<tr>
@@ -352,12 +352,6 @@
 			<td colspan=2>&nbsp;</td>
 		</tr>
 		<tr>
-			<td colspan=2>&nbsp;</td>
-		</tr>
-		<tr>
-			<td colspan=2>&nbsp;</td>
-		</tr>
-		<tr>
 			<td>Image 1</td>
 			<td>
 				<input type="file" id="jobimage1" name="jobimage1"  />
@@ -387,7 +381,7 @@
 		<tr>
 			<td>Pesticides Used</td>
 			<td>
-				<input type="text" id="jobpesticides" name="jobpesticides"  />
+				<input type="text" id="jobpesticides" name="jobpesticides" required="true" />
 			</td>
 		</tr>
 		<tr>
@@ -412,9 +406,25 @@
 			</td>
 		</tr>
 	</table>
-	<input type="submit" />
+	<br>
+	<a class="submit" href="javascript: runreport();"><em><b>Submit</b></em></a>
 </form>
 <script>
+	function runreport(e) {
+		if (! verifyStandardForm("#reportform")) {
+			return false;
+		}
+	
+		$('#reportform').submit();
+	
+		try {
+			e.preventDefault();
+	
+		} catch (e) {
+	
+		}
+	}
+
 	$(document).ready(
 			function() {
 				$('.sigPad').signaturePad(

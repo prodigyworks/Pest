@@ -380,7 +380,13 @@ function sendJobMessage($jobid, $subject, $message, $attachments = array()) {
 						$_SESSION['EMAIL_ADDRESS'], 
 						$_SESSION['EMAIL_NAME'], 
 						$subject, 
-						$message, 
+						getEmailHeader() . 
+								"<h4>Dear " . 
+								$member['firstname'] . 
+								",</h4><p>" . 
+								$message . 
+								"</p>" . 
+								getEmailFooter(), 
 						$attachments
 					);
 			}
@@ -391,7 +397,13 @@ function sendJobMessage($jobid, $subject, $message, $attachments = array()) {
 						$_SESSION['EMAIL_ADDRESS'], 
 						$_SESSION['EMAIL_NAME'], 
 						$subject, 
-						$message, 
+						getEmailHeader() . 
+								"<h4>Dear " . 
+								$member['firstname'] . 
+								",</h4><p>" . 
+								$message . 
+								"</p>" . 
+								getEmailFooter(), 
 						$attachments
 					);
 			}
@@ -402,7 +414,13 @@ function sendJobMessage($jobid, $subject, $message, $attachments = array()) {
 						$_SESSION['EMAIL_ADDRESS'], 
 						$_SESSION['EMAIL_NAME'], 
 						$subject, 
-						$message, 
+						getEmailHeader() . 
+								"<h4>Dear " . 
+								$member['firstname'] . 
+								",</h4><p>" . 
+								$message . 
+								"</p>" . 
+								getEmailFooter(), 
 						$attachments
 					);
 			}

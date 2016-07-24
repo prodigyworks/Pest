@@ -6,13 +6,13 @@
 	
 	function addSignatureForm() {
 	?>
-		  <link rel="stylesheet" href="build/jquery.signaturepad.css">
+		  <link rel="stylesheet" href="build/jquery.signaturepad-24072016.css">
 		  <!--[if lt IE 9]><script src="build/flashcanvas.js"></script><![endif]-->
 		  <script src="build/jquery.signaturepad.min.js"></script>
 		  <script src="build/json2.min.js"></script>
 			  <div class="sigPad">
 			    <label for="name">Print your name</label>
-			    <input type="text" name="name" id="name" class="name">
+			    <input type="text" name="name" id="name" class="name" required="true">
 			    <p class="typeItDesc">Review your signature</p>
 			    <p class="drawItDesc">Draw your signature</p>
 			    <ul class="sigNav">
