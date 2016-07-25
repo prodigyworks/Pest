@@ -10,6 +10,7 @@
 		
 		$qry = "UPDATE {$_SESSION['DB_PREFIX']}diary SET 
 				memberid = $memberid,
+				allocateddate = CURDATE(),
 				status = 'A'
 				WHERE id = $id";
 		$result = mysql_query($qry);

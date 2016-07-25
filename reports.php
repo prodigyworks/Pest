@@ -1,3 +1,3 @@
 <?php
-	header("location: reporthoursworked.php");
+	header("location: reportreadytobeinvoiced.php");
 ?>

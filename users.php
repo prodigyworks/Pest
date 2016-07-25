@@ -246,11 +246,6 @@
 				'title'		  => 'Documents',
 				'imageurl'	  => 'images/document.gif',
 				'script' 	  => 'editDocuments'
-			),
-			array(
-				'title'		  => 'Rota',
-				'imageurl'	  => 'images/checkin.png',
-				'application' => 'userrota.php'
 			)
 		);
 				

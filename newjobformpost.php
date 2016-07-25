@@ -10,16 +10,19 @@
 	$jobvisittype = mysql_escape_string($_POST['jobvisittype']);
 	$clientid = mysql_escape_string($_POST['siteid']);
 	$jobobservations = mysql_escape_string($_POST['jobobservations']);
+	$jobreadytobeinvoiced = isset($_POST['jobreadytobeinvoiced']) ? "Y" : "N";
 	
 	$sql = "INSERT INTO {$_SESSION['DB_PREFIX']}diary
 			(
 				clientid, starttime, jobtime, status,
-				jobobservations, jobvisittype, jobaddress
+				jobobservations, jobvisittype, jobaddress,
+				jobreadytobeinvoiced
 			)
 			VALUES
 			(
 				$clientid, '$jobdate', '$jobtime', 'N',
-				'$jobobservations', '$jobvisittype', '$jobaddress'
+				'$jobobservations', '$jobvisittype', '$jobaddress',
+				'$jobreadytobeinvoiced'
 			)";
 	
 	$result = mysql_query($sql);

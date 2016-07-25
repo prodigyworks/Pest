@@ -51,6 +51,12 @@
 				<textarea id="jobobservations" name="jobobservations" cols=60 rows=5></textarea>
 			</td>
 		</tr>
+		<tr>
+			<td>Ready To Be Invoiced?</td>
+			<td>
+				<input type="checkbox" id="jobreadytobeinvoiced" name="jobreadytobeinvoiced" />
+			</td>
+		</tr>
 	</table>
 	<input type="submit" />
 </form>
