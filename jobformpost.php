@@ -1,6 +1,7 @@
 <?php 
 	require_once("system-db.php"); 
 	require_once("reportjoblib.php");
+	require_once('signature-to-image.php');
 	require_once("sqlfunctions.php"); 
 	
 	start_db();
@@ -51,12 +52,16 @@
 	$jobimage4 = getImageData("jobimage4");
 	$clientname = mysql_escape_string($_POST['name']);
 	
+	if ($jobpesticides == "" || ! is_int($jobpesticides)) {
+		$jobpesticides = 0;
+	}
+	
 	try {
 		$img = null;
 		
 		if (isset($_POST['output']) && $_POST['output'] != "") {
 			$img = sigJsonToImage($_POST['output']);
-		
+			
 		} else {
 			// Create the image
 			$img = imagecreatetruecolor(400, 30);
@@ -162,7 +167,23 @@
 	
 	mysql_query("COMMIT");
 	
-	$filename = str_replace(".", "_", $clientname);
+	$qry = "SELECT B.name FROM {$_SESSION['DB_PREFIX']}diary A
+		INNER JOIN {$_SESSION['DB_PREFIX']}client B
+		ON B.id = A.clientid
+		WHERE A.id = $jobid ";
+		
+	$result = mysql_query($qry);
+	$clientfilename = "Unknown";
+
+	//Check whether the query was successful or not
+	if($result) {
+		while (($member = mysql_fetch_assoc($result))) {
+			$clientfilename = $member['name'];
+		}
+	}
+
+	
+	$filename = str_replace(".", "_", $clientfilename);
 	$filename .= ".pdf";
 	
 	if ($jobclientref != "") {

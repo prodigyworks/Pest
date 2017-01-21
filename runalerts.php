@@ -4,7 +4,7 @@
 	start_db();
 	
 //	require_once("db-backup.php");
-	require_once("run-diary.php");
+//	require_once("run-diary.php");
 	
    	sendRoleMessage("ALERT", "Daily alert task schedule", "Information: Alerts task schedule run at " . date("d/m/Y"));
     	

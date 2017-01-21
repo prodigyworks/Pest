@@ -57,6 +57,12 @@
 				<input type="checkbox" id="jobreadytobeinvoiced" name="jobreadytobeinvoiced" />
 			</td>
 		</tr>
+		<tr>
+			<td>Auto Allocate?</td>
+			<td>
+				<input type="checkbox" id="jobautoallocate" name="jobautoallocate" />
+			</td>
+		</tr>
 	</table>
 	<input type="submit" />
 </form>

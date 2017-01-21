@@ -37,14 +37,14 @@
 				
 				echo "<p>$clientname</p>";
 				
-				for ($year = 0; $year < 100; $year++) {
+				for ($year = 0; $year < 20; $year++) {
 					$date = DateTime::createFromFormat('Y-m-d', $startofcontract);
 					$date->modify("+$year years");
 					
-					echo "<p>$clientname</p>";
+//					echo "<p>$clientname</p>";
 					
 					for ($i = 0; $i < $frequency; $i++) {
-						echo "$i. Client ID:$clientid - Freq:$frequency - Diff $diff - Days: $days - Start:$sdate - Add:$add - Start:$startofyear - End:$endofyear<br>";
+//						echo "$i. Client ID:$clientid - Freq:$frequency - Diff $diff - Days: $days - Start:$sdate - Add:$add - Start:$startofyear - End:$endofyear<br>";
 
 						if ($contracttype == "A") {
 							/* Add row. */

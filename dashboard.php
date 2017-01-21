@@ -151,7 +151,7 @@
 	$crud = new DashboardCrud();
 	$crud->dialogwidth = 650;
 	$crud->allowAdd = false;
-	$crud->allowRemove = false;
+	$crud->allowRemove = isUserInRole("ADMIN");
 	$crud->allowEdit = false;
 	$crud->allowView = false;
 	$crud->title = "Dashboard";
@@ -187,18 +187,25 @@
 			array(
 				'name'       => 'siteid',
 				'length' 	 => 10,
+				'datatype'	 => 'integer',
+				'filterprefix' => 'B',
+				'filtercolumn' => 'id',
 				'align'		 => 'right',
 				'label' 	 => 'Site ID'
 			),
 			array(
 				'name'       => 'name',
 				'length' 	 => 35,
+				'filterprefix' => 'B',
 				'label' 	 => 'Site Name'
 			),			
 			array(
 				'name'       => 'jobid',
+				'datatype'	 => 'integer',
 				'length' 	 => 10,
 				'align'		 => 'right',
+				'filterprefix' => 'A',
+				'filtercolumn' => 'id',
 				'label' 	 => 'Job ID'
 			),
 			array(
@@ -226,9 +233,16 @@
 					)
 			),
 			array(
-				'name'       => 'fullname',
-				'length' 	 => 24,
-				'label' 	 => 'Engineer'
+				'name'       => 'memberid',
+				'type'       => 'DATACOMBO',
+				'length' 	 => 18,
+				'editable'	 => false,
+				'bind'		 => false,
+				'label' 	 => 'Engineer',
+				'table'		 => 'members',
+				'table_id'	 => 'member_id',
+				'alias'		 => 'fullname',
+				'table_name' => 'fullname'
 			)
 		);
 		

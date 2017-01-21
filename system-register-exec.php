@@ -111,27 +111,34 @@
 	
 		//Create INSERT query
 		$qry = "INSERT INTO {$_SESSION['DB_PREFIX']}userroles(memberid, roleid, metacreateddate, metacreateduserid, metamodifieddate, metamodifieduserid) VALUES($memberid, 'PUBLIC', NOW(), " . getLoggedOnMemberID() . ", NOW(), " .  getLoggedOnMemberID() . ")";
-		$result = @mysql_query($qry);
+		$result = mysql_query($qry);
+
+		if(! $result) {
+			logError("$qry: 0 Query failed:" . mysql_error());
+		}
+
 		$qry = "INSERT INTO {$_SESSION['DB_PREFIX']}userroles(memberid, roleid, metacreateddate, metacreateduserid, metamodifieddate, metamodifieduserid) VALUES($memberid, 'USER', NOW(), " . getLoggedOnMemberID() . ", NOW(), " .  getLoggedOnMemberID() . ")";
-		$result = @mysql_query($qry);
+		$result = mysql_query($qry);
 		
+		if(! $result) {
+			logError("$qry: 1 Query failed:" . mysql_error());
+		}
 		
 		if (isset($_POST['accounttype'])) {
 			$accountrole = $_POST['accounttype'];
 
 			$qry = "INSERT INTO {$_SESSION['DB_PREFIX']}userroles(memberid, roleid, metacreateddate, metacreateduserid, metamodifieddate, metamodifieduserid) VALUES($memberid, '$accountrole', NOW(), " . getLoggedOnMemberID() . ", NOW(), " .  getLoggedOnMemberID() . ")";
-			$result = @mysql_query($qry);
+			$result = mysql_query($qry);
+
+		        if(! $result) {
+			        logError("$qry: 2 Query failed:" . mysql_error());
+		        }
 		}
 		
 		sendRoleMessage("ADMIN", "User Registration", "User " . $login . " has been registered as a user.<br>Password : " . $_POST['password']);
 		sendUserMessage($memberid, "User Registration", "<h3>Welcome $fname $lname.</h3><br>You have been invited to become a member of '{$_SESSION['EMAIL_NAME']}.<br>Please click on the <a href='" . getSiteConfigData()->domainurl . "/index.php'>link</a> to activate your account.<br><br><h4>Login details</h4>User ID : $login<br>Password : " . $_POST['password']);
 		
-		if($result) {
-			header("location: system-register-success.php");
-	
-		} else {
-			logError("1 Query failed:" . mysql_error());
-		}
+		header("location: system-register-success.php");
 		
 	} else {
 		$memberid = $_GET['id'];

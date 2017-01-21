@@ -387,7 +387,7 @@ function RoundedRect($x, $y, $w, $h, $r, $corners = '1234', $style = '')
 	}
 
 	// Company
-	function addHeading($x1, $y1, $heading, $value, $margin = 36, $fontSize = 7, $lineheight = 3) {
+	function addHeading($x1, $y1, $heading, $value, $margin = 36, $fontSize = 7, $lineheight = 3, $width = 0) {
 		// Positionnement en bas
 		$this->SetTextColor ( 0, 0, 100 );
 		;
@@ -400,10 +400,16 @@ function RoundedRect($x, $y, $w, $h, $r, $corners = '1234', $style = '')
 		$maxY = $this->GetY ();
 
 		$this->SetTextColor ( 0, 0, 0 );
-		;
 		$this->SetXY ( $x1 + $margin, $y1 );
 		$this->SetFont ( 'Arial', '', $fontSize );
-		$length = $this->GetStringWidth ( $value . " " ) * 2;
+		
+		if ($width != 0) {
+			$length = $width;
+		
+		} else {
+			$length = $this->GetStringWidth ( $value . " " ) * 2;
+		}
+		
 		$tailleTexte = $this->sizeOfText ( $value, $length );
 		$this->MultiCell ( $length, $lineheight, $value );
 

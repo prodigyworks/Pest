@@ -169,7 +169,25 @@
 			        scheduler.clearAll();
 			    return true;
 			});
-			scheduler.attachEvent("onBeforeDrag",function(){return false;})
+//			scheduler.attachEvent("onBeforeDrag",function(){return false;})
+			scheduler.attachEvent("onEventChanged", function(id,ev){
+					var startDate = dateToDMY(ev.start_date);
+					
+					callAjax(
+							"updateevent.php", 
+							{ 
+								startdate: startDate,
+								id: id,
+								sectionid: ev.section_id,
+								mode: "<?php echo $mode; ?>"
+							},
+							function(data) {
+								scheduler.clearAll();
+								scheduler.setCurrentView(null, "timeline");
+							},
+							true
+						);
+				});
 	      	scheduler.attachEvent("onDblClick",function(){return false;})
 	      	scheduler.attachEvent("onClick",function(){return false;})
 			scheduler.config.xml_date="%Y-%m-%d %H:%i";

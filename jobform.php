@@ -11,6 +11,12 @@
 <form class="contentform" id="reportform" method="post" enctype="multipart/form-data" action="jobformpost.php">
 	<table cellspacing=7>
 		<tr>
+			<td>Technician</td>
+			<td>
+				<div><?php echo GetUserName(); ?></div>
+			</td>
+		</tr>
+		<tr>
 			<td>Date</td>
 			<td>
 				<input type="date" id="jobdate" name="jobdate" required value="<?php echo date("Y-m-d"); ?>" required="true" />
@@ -72,12 +78,12 @@
 							<input type="checkbox" id="jobactivity_cockroaches" name="jobactivity_cockroaches"> Cockroaches </input>
 						</td>
 						<td>
-							<input type="checkbox" id="jobactivity_wasps" name="jobactivity_wasps"> Wasps </input>
+							<input type="checkbox" id="jobactivity_wasps" name="jobactivity_wasps"> Insects (flying) </input>
 						</td>
 					</tr>
 					<tr>
 						<td>
-							<input type="checkbox" id="jobactivity_foxes" name="jobactivity_foxes"> Foxes </input>
+							<input type="checkbox" id="jobactivity_foxes" name="jobactivity_foxes"> Other </input>
 						</td>
 						<td>
 							<input type="checkbox" id="jobactivity_birds" name="jobactivity_birds"> Birds </input>
@@ -381,7 +387,7 @@
 		<tr>
 			<td>Pesticides Used</td>
 			<td>
-				<input type="text" id="jobpesticides" name="jobpesticides" required="true" />
+				<input type="number" id="jobpesticides" name="jobpesticides"  />
 			</td>
 		</tr>
 		<tr>
@@ -470,6 +476,13 @@
 								);	
 						}
 					);
+<?php 
+				if (isset($_GET['id'])) {
+?>
+				$("#jobid").val("<?php echo $_GET['id']; ?>").trigger("change");
+<?php
+				}
+?>
 			}
 		);
 </script>

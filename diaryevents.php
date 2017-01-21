@@ -54,6 +54,7 @@
 				'showInView' => false,
 				'editable'	 => false,
 				'bind' 	 	 => false,
+				'filter' 	 => false,
 				'label' 	 => 'ID'
 			),
 			array(
@@ -79,10 +80,10 @@
 				'table_name' => 'fullname'
 			),
 			array(
-				'name'       => 'starttime',
+				'name'       => 'jobdate',
 				'datatype'	 => 'date',
 				'length' 	 => 20,
-				'label' 	 => 'Start Date'
+				'label' 	 => 'Completed Date'
 			)
 		);
 

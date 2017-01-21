@@ -62,15 +62,16 @@
 						$y = $this->addHeading(15, $y, "Address", $member['jobaddress']) + 1;
 						$y = $this->addHeading(15, $y, "Client Ref", $member['jobclientref']) + 1;
 						$y = $this->addHeading(15, $y, "Job Ref Task", $member['jobreftask']) + 1;
+						$y = $this->addHeading(15, $y, "Technician", GetUserName($member['memberid'])) + 1;
 						
 						$y = $this->addText(15, $y + 4, "Pest Activity", 9, 9, 'B') + 4;
 						
 						$this->addCheckHeader(15, $y, "Rats", $member['jobactivity_rats']);
 						$this->addCheckHeader(55, $y, "Mice", $member['jobactivity_mice']);
 						$this->addCheckHeader(95, $y, "Cockroaches", $member['jobactivity_cockroaches']);
-						$y = $this->addCheckHeader(135, $y, "Wasps", $member['jobactivity_wasps']) + 2;
+						$y = $this->addCheckHeader(135, $y, "Insects (flying)", $member['jobactivity_wasps']) + 2;
 						
-						$this->addCheckHeader(15, $y, "Foxes", $member['jobactivity_foxes']);
+						$this->addCheckHeader(15, $y, "Other", $member['jobactivity_foxes']);
 						$this->addCheckHeader(55, $y, "Birds", $member['jobactivity_birds']);
 						$this->addCheckHeader(95, $y, "Insects (Biting)", $member['jobactivity_bitinginsects']);
 						$y = $this->addCheckHeader(135, $y, "Insects (Crawling)", $member['jobactivity_crawlinginsects']) + 2;
@@ -90,10 +91,10 @@
 							$visittype = "Surveyors Visit";
 						}
 						
-						$y = $this->addHeading(15, $y, "Visit Type", $visittype, 70) + 3;
-						$y = $this->addHeading(15, $y, "Observations & Work Completed", $member['jobobservations'], 70) + 3;
-						$y = $this->addHeading(15, $y, "Actions required for client", $member['jobactions'], 70) + 3;
-						$y = $this->addHeading(15, $y, "Actions required by excelets", $member['jobexcelets'], 70) + 6;
+						$y = $this->addHeading(15, $y, "Visit Type", $visittype, 70, 7, 3, 80) + 3;
+						$y = $this->addHeading(15, $y, "Observations & Work Completed", $member['jobobservations'], 70, 7, 3, 120) + 3;
+						$y = $this->addHeading(15, $y, "Actions required for client", $member['jobactions'], 70, 7, 3, 120) + 3;
+						$y = $this->addHeading(15, $y, "Actions required by excelets", $member['jobexcelets'], 70, 7, 3, 120) + 6;
 						
 						$y = $this->addHeading(15, $y, "Are mouse droppings present?", $member['jobmousedroppingspresent'] == "Y" ? "Yes" : "No", 70) + 3;
 						$y = $this->addHeading(15, $y, "Are there hygiene faults?", $member['jobhygienefaults'] == "Y" ? "Yes" : "No", 70) + 3;

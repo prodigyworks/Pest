@@ -827,7 +827,17 @@ class Crud  {
 								"sub_tree"			=> ""
 							);
 							
-				if ($col['datatype'] == "string") {
+				if ($col['datatype'] == "date") {
+					$filterValue = convertStringToDate($filterValue);
+					$parser->parsed['WHERE'][] = 
+							array(
+									"expr_type" 		=> "operator",
+									"base_expr"			=> "=",
+									"sub_tree"			=> ""
+								);
+					
+				} else if ($col['datatype'] == "string") {
+					$filterValue = "%$filterValue%";
 					$parser->parsed['WHERE'][] = 
 							array(
 									"expr_type" 		=> "operator",
@@ -863,8 +873,6 @@ class Crud  {
 		}
 		
 		$this->sql = $created;
-		
-//		logError($this->sql);
 	}
 	
 	public function showHTMLAssets() {

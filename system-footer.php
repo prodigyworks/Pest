@@ -7,7 +7,7 @@
 						<!-- footer -->
 						</div>
 						<div id="footer">
-							<div class="footer"><a href='http://www.prodigyworks.co.uk'>Powered by <img title="ProdigyWorks!" alt="ProdigyWorks!" src='images/prodigyworks.png' /></a><br />
+							<div class="footer"><a href='http://www.aperfectpocket.co.uk'>Powered by <img title="A Perfect Pocket" alt="A Perfect Pocket" src='images/aperfectpocket.png' /></a><br />
 							</div>
 						</div>
 					</TD>
